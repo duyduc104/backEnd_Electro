@@ -1,0 +1,161 @@
+﻿@model IEnumerable<electroMVC.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@* <table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.brand)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.brand.BrandName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table> *@
+
+<div class="col-md-12">
+	<div class="row">
+		<!-- store top filter -->
+		<div class="store-filter clearfix">
+			<div class="store-sort">
+				<label>
+					Sort By:
+					<select class="input-select">
+						<option value="0"></option>
+						<option value="1"></option>
+					</select>
+				</label>
+
+				<label>
+					Quanlity:
+					<select class="input-select">
+						@foreach (var item in Model)
+						{
+							<option value="1">@Html.DisplayFor(modelItem => item.ProductQuantity)</option>
+						}
+					</select>
+				</label>
+			</div>
+			<ul class="store-grid">
+				<li class="active"><i class="fa fa-th"></i></li>
+				<li><a href="#"><i class="fa fa-th-list"></i></a></li>
+			</ul>
+		</div>
+		<!-- /store top filter -->
+		<div class="products-tabs">
+			<!-- tab -->
+			<div id="tab2" class="tab-pane fade in active">
+				<div class="products-slick" data-nav="#slick-nav-2">
+					<!-- product -->
+					@foreach (var item in Model)
+					{
+						<div class="product">
+							<div class="product-img">
+								<img src="/img/@Html.DisplayFor(modelItem => item.ProductImage)" alt="">
+								<div class="product-label">
+									<span class="sale">-30%</span>
+									<span class="new">NEW</span>
+								</div>
+							</div>
+							<div class="product-body">
+								<p class="product-category"> @Html.DisplayFor(modelItem => item.Category.CategoryName)</p>
+								<h3 class="product-name"><a href="/Products/DescriptionAndBuy?productId=@item.ProductId">@Html.DisplayFor(modelItem => item.ProductName)</a></h3>
+								<h4 class="product-price">$@Html.DisplayFor(modelItem => item.ProductPrice) <del class="product-old-price">$990.00</del></h4>
+								<div class="product-rating">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+								<div class="product-btns">
+									<button class="add-to-wishlist"><a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a></button>
+									<button class="add-to-compare"><a asp-action="Details" asp-route-id="@item.ProductId">Details</a></button>
+									<button class="quick-view"><a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a></button>
+								</div>
+							</div>
+							<div class="add-to-cart">
+								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+							</div>
+						</div>
+					}
+					<!-- /product -->
+				</div>
+				
+			</div>
+			<!-- /tab -->
+		</div>
+		<!-- store bottom filter -->
+		<div class="store-filter clearfix">
+			<span class="store-qty">Showing 20-100 products</span>
+			<ul class="store-pagination">
+				<li class="active">1</li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+			</ul>
+		</div>
+		<!-- /store bottom filter -->
+	</div>
+</div>
+<!-- /Products tab & slick -->

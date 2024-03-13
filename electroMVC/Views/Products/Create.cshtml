@@ -1,0 +1,178 @@
+﻿@model electroMVC.Models.Product
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<h4>Product</h4>
+<hr />
+<!-- SECTION -->
+<div class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+			<!-- ASIDE -->
+			<div id="aside" class="col-md-3">
+				<!-- aside Widget -->
+				<div class="aside">
+					<h3 class="aside-title">Categories</h3>
+					<div class="checkbox-filter">
+
+						<div class="input-checkbox">
+							<input type="checkbox" id="category-1">
+							<label for="category-1">
+								<span></span>
+								<form asp-action="Create">
+									<div class="form-group">
+										<select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+									</div>
+								</form>
+								<small></small>
+							</label>
+						</div>
+
+						
+					</div>
+				</div>
+				<!-- /aside Widget -->
+				<!-- aside Widget -->
+				<div class="aside">
+					<h3 class="aside-title">Price</h3>
+					<div class="price-filter">
+						<div id="price-slider"></div>
+						<div class="input-number price-min">
+							<input id="price-min" type="number">
+							<span class="qty-up">+</span>
+							<span class="qty-down">-</span>
+						</div>
+						<span>-</span>
+						<div class="input-number price-max">
+							<input id="price-max" type="number">
+							<span class="qty-up">+</span>
+							<span class="qty-down">-</span>
+						</div>
+					</div>
+				</div>
+				<!-- /aside Widget -->
+				<!-- aside Widget -->
+				<div class="aside">
+					<h3 class="aside-title">Brand</h3>
+					<div class="checkbox-filter">
+						<div class="input-checkbox">
+							<input type="checkbox" id="brand-1">
+							<label for="brand-1">
+								<span></span>
+								<form asp-action="Create">
+									<div class="form-group">
+										<select asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
+									</div>
+								</form>
+								<small></small>
+							</label>
+						</div>
+					</div>
+				</div>
+				<!-- /aside Widget -->
+				<!-- aside Widget -->
+				<div class="aside">
+					<h3 class="aside-title">Top selling</h3>
+					<div class="product-widget">
+						<div class="product-img">
+							<img src="/img/product01.png" alt="">
+						</div>
+						<div class="product-body">
+							<p class="product-category">Category</p>
+							<h3 class="product-name"><a href="#">product name goes here</a></h3>
+							<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+						</div>
+					</div>
+
+					<div class="product-widget">
+						<div class="product-img">
+							<img src="/img/product02.png" alt="">
+						</div>
+						<div class="product-body">
+							<p class="product-category">Category</p>
+							<h3 class="product-name"><a href="#">product name goes here</a></h3>
+							<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+						</div>
+					</div>
+
+					<div class="product-widget">
+						<div class="product-img">
+							<img src="/img/product03.png" alt="">
+						</div>
+						<div class="product-body">
+							<p class="product-category">Category</p>
+							<h3 class="product-name"><a href="#">product name goes here</a></h3>
+							<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+						</div>
+					</div>
+				</div>
+				<!-- /aside Widget -->
+			</div>
+			<!-- /ASIDE -->
+			<!-- STORE -->
+			<div id="store" class="col-md-9">
+				<!-- store products -->
+				<div class="row">
+					<div class="col-md-4">
+						<form asp-action="Create">
+							<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+							<div class="form-group">
+								<label asp-for="ProductName" class="control-label"></label>
+								<input asp-for="ProductName" class="form-control" />
+								<span asp-validation-for="ProductName" class="text-danger"></span>
+							</div>
+							<div class="form-group">
+								<label asp-for="ProductDescription" class="control-label"></label>
+								<input asp-for="ProductDescription" class="form-control" />
+								<span asp-validation-for="ProductDescription" class="text-danger"></span>
+							</div>
+							<div class="form-group">
+								<label asp-for="ProductImage" class="control-label"></label>
+								<input asp-for="ProductImage" class="form-control" />
+								<span asp-validation-for="ProductImage" class="text-danger"></span>
+							</div>
+							<div class="form-group">
+								<label asp-for="ProductPrice" class="control-label"></label>
+								<input asp-for="ProductPrice" class="form-control" />
+								<span asp-validation-for="ProductPrice" class="text-danger"></span>
+							</div>
+							<div class="form-group">
+								<label asp-for="ProductQuantity" class="control-label"></label>
+								<input asp-for="ProductQuantity" class="form-control" />
+								<span asp-validation-for="ProductQuantity" class="text-danger"></span>
+							</div>
+							@* <div class="form-group">
+								<label asp-for="CategoryId" class="control-label"></label>
+								<select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+							</div> *@
+							@* <div class="form-group">
+								<label asp-for="BrandId" class="control-label"></label>
+								<select asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
+							</div> *@
+							<div class="form-group">
+								<input type="submit" value="Create" class="btn btn-default" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- /STORE -->
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
+</div>
+<!-- /SECTION -->
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

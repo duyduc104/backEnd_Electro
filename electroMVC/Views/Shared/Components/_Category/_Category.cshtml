@@ -1,0 +1,24 @@
+﻿@model IEnumerable<electroMVC.Models.Category>
+
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<div class="col-md-12">
+	<div class="section-title">
+		<h3 class="title">New Products</h3>
+		<div class="section-nav">
+			<ul class="section-tab-nav tab-nav">
+				@foreach (var item in Model){
+					<li><a  href="/Products/ProductByCategory?catId=@item.CategoryId">@item.CategoryName</a></li>
+				}
+			</ul>
+		</div>
+	</div>
+</div> 
+@* <ul class="dropdown-menu d-flex flex-wrap">
+	@foreach (var item in Model)
+	{
+		<li><a class="dropdown-item" href="#">@item.CategoryName</a></li>
+	}
+</ul>  *@
+

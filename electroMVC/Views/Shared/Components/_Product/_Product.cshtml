@@ -1,0 +1,63 @@
+﻿@model IEnumerable<electroMVC.Models.Product>
+
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<!-- Products tab & slick -->
+<div class="container" style="">
+	<form asp-controller="Products" asp-action="Index">
+		<p style="text-align:center; display:flex;justify-content:center;">
+			<input type="text" name="SearchString" placeholder="Search..." style="width:50%; height:50px;outline:none;border-radius:10px;" />
+			<input type="submit" value="Search" class="btn btn-danger" style="margin:0px 5px; outline:none; border:none;border-radius:10px;"/>
+		</p>
+	</form>
+</div>
+<div class="col-md-12">
+	<div class="row">
+		<div class="products-tabs">
+			<!-- tab -->
+			<div id="tab1" class="tab-pane active">
+				<div class="products-slick" data-nav="#slick-nav-1">
+					<!-- product -->
+					@foreach (var item in Model)
+					{
+						<div class="product">
+							<div class="product-img">
+								<img src="/img/@item.ProductImage" alt="">
+								<div class="product-label">
+									<span class="sale">-30%</span>
+									<span class="new">NEW</span>
+								</div>
+							</div>
+							<div class="product-body">
+								<p class="product-category">@item.Category.CategoryName</p>
+								<h3 class="product-name"><a href="/Products/DescriptionAndBuy?productId=@item.ProductId">@item.ProductName</a></h3>
+								<h4 class="product-price">$ @item.ProductPrice <del class="product-old-price">$908.00 </del></h4>
+								<div class="product-rating">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+								<div class="product-btns">
+									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+								</div>
+							</div>
+							<div class="add-to-cart">
+								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+							</div>
+						</div>
+					}
+					<!-- /product -->
+
+				</div>
+				<div id="slick-nav-1" class="products-slick-nav"></div>
+			</div>
+			<!-- /tab -->
+		</div>
+	</div>
+</div>
+<!-- Products tab & slick -->
