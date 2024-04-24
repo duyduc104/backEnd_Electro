@@ -57,6 +57,14 @@ namespace electroMVC.Controllers
 			var electroMVCContext = _context.Product.Include(p => p.Category).Include(p => p.brand).Where(p => p.ProductId == productId);
 			return View(await electroMVCContext.ToListAsync());
 		}
+
+		public async Task<IActionResult> ShowProduct(int productId)
+		{
+
+			var electroMVCContext = _context.Product.Include(p => p.Category).Include(p => p.brand).Where(p => p.ProductId == productId);
+			return View(await electroMVCContext.ToListAsync());
+		}
+		[Authorize(Roles = "admin")]
 		// GET: Products/Details/5
 		public async Task<IActionResult> Details(int? id)
         {
@@ -77,8 +85,9 @@ namespace electroMVC.Controllers
             return View(product);
         }
 
-        // GET: Products/Create
-        public IActionResult Create()
+		[Authorize(Roles = "admin")]
+		// GET: Products/Create
+		public IActionResult Create()
         {
             ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName");
             ViewData["BrandId"] = new SelectList(_context.Brand, "BrandId", "BrandName");
@@ -103,8 +112,9 @@ namespace electroMVC.Controllers
             return View(product);
         }
 
-        // GET: Products/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+		[Authorize(Roles = "admin")]
+		// GET: Products/Edit/5
+		public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -158,8 +168,9 @@ namespace electroMVC.Controllers
             return View(product);
         }
 
-        // GET: Products/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+		[Authorize(Roles = "admin")]
+		// GET: Products/Delete/5
+		public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {

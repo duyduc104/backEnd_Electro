@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("electroMVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4199fd205fa2682c9845f6aaa92f27a8b1d72c47")]
 [assembly: System.Reflection.AssemblyProductAttribute("electroMVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("electroMVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

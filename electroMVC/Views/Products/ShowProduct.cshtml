@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "ShowProduct";
+    Layout = "~/Views/Shared/_ProductList.cshtml";
+}
+
+<h2>ShowProduct</h2>
+
+<!-- SECTION -->
+<div class="section">
+	<!-- container -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<ul class="breadcrumb-tree">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">All Categories</a></li>
+					<li><a href="#">Accessories</a></li>
+					<li><a href="#">Headphones</a></li>
+					<li class="active">Product name goes here</li>
+				</ul>
+			</div>
+		</div>
+		<!-- row -->
+		<div class="row">
+			<!-- Product main img -->
+			<div class="col-md-5 col-md-push-2">
+				<div id="product-main-img">
+					<div class="product-preview">
+						@foreach (var item in Model)
+						{
+							<img src="/img/@item.ProductImage" alt="">
+						}
+
+					</div>
+				</div>
+			</div>
+			<!-- /Product main img -->
+			<!-- Product thumb imgs -->
+			<div class="col-md-2  col-md-pull-5">
+				<div id="product-imgs">
+					@foreach (var item in Model)
+					{
+						<img src="/img/@item.ProductImage" alt="">
+					}
+
+				</div>
+			</div>
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
+</div>
+<!-- /SECTION -->
